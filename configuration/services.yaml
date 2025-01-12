@@ -33,46 +33,38 @@
             url: https://192.168.10.1/
             username: robert@robertfarrington.com
             password: Cag@8awe
-            site: Butterfly # optional
-    - Traefik:
-        icon: traefik.svg
-        href: "{{HOMEPAGE_VAR_TRAEFIK_URL}}"
-        description: Reverse Proxy and Ingress
-        widget:
-          type: traefik
-          url: "{{HOMEPAGE_VAR_TRAEFIK_URL}}"
     - Home Assistant:
         icon: home-assistant.svg
-        href: "{{HOMEPAGE_VAR_HOME_ASSISTANT_URL}}"
+        href: "http://homeassistant.local:8123/"
         description: Home Automation
         widget:
           type: homeassistant
-          url: http://192.168.0.115:8123
-          key: "{{HOMEPAGE_VAR_HOME_ASSISTANT_API_KEY}}"
+          url: 192.168.10.167:8123
+          key: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhMGMyN2YyZjU2Y2E0OTNkOGE0ZTFhZjAxYTg0ODI4NCIsImlhdCI6MTczNjY1NTgwMCwiZXhwIjoyMDUyMDE1ODAwfQ.lRSHZbDpNVpGfxeSYTpqHWZYS72OIgzeHkGLc_m9CMo"
           custom:
-            - state: sensor.thermostat_temperature
-            - state: lock.node_3
-            - state: sensor.node_3_battery_level
-    - Crowdsec:
-        icon: crowdsec.svg
-        href: https://app.crowdsec.net
+            - state: speedtest_download
+            - state: sensor.butterfly_san_diego_sensors_temperature
+            - state: sensor.living_room_temperature
+    - Uptime Robot:
+        icon: uptime-kuma.svg
+        href: "https://dashboard.uptimerobot.com"
+        description: Status Monitor
+        widget:
+          type: uptimerobot
+          url: https://api.uptimerobot.com
+          key: ur1394528-6ac2a91c0af14912b463aab7
+    - Protect:
+        icon: unifi-protect
+        href: https://192.168.10.109/
         description: Security
-    - Omada:
-        icon: omada.svg
-        href: https://192.168.0.100
-        description: Network Controller
-    - Frigate:
-        icon: frigate.svg
-        href: "{{HOMEPAGE_VAR_FRIGATE_URL}}"
-        description: NVR and ML Detection
     - Cloudflare:
         icon: cloudflare.svg
         href: https://dash.cloudflare.com
         description: Public DNS
     - Portainer:
         icon: portainer.svg
-        href: "{{HOMEPAGE_VAR_PORTAINER_URL}}"
-        description: Portainer K3S GUI
+        href: "http://192.168.10.127:9000"
+        description: Portainer GUI
 - Media:
     - Jellyfin:
         icon: jellyfin.svg
@@ -111,35 +103,6 @@
           type: immich
           url: http://192.168.0.115:8760
           key: "{{HOMEPAGE_VAR_IMMICH_API_TOKEN}}"
-- Monitoring:
-    - Uptime Kuma:
-        icon: uptime-kuma.svg
-        href: "{{HOMEPAGE_VAR_UPTIME_KUMA_URL}}"
-        description: Status Monitor
-        widget:
-          type: uptimekuma
-          url: http://10.43.80.45:3001
-          slug: home
-    - Speedtest Tracker:
-        icon: librespeed.svg
-        href: "{{HOMEPAGE_VAR_SPEEDTEST_URL}}"
-        description: Internet Speed Test
-        widget:
-          type: speedtest
-          url: http://10.43.1.73:80
-    - Grafana:
-        icon: grafana.svg
-        href: "{{HOMEPAGE_VAR_GRAFANA_URL}}"
-        description: Prometheus Metrics
-        widget:
-          type: grafana
-          url: http://10.43.95.48:80
-          username: "{{HOMEPAGE_VAR_GRAFANA_USERNAME}}"
-          password: "{{HOMEPAGE_VAR_GRAFANA_PASSWORD}}"
-    - EMQX Dashboard:
-        icon: emqx.svg
-        href: "{{HOMEPAGE_VAR_EMQX_URL}}"
-        description: MQTT Dashboard
 - Tor Stack:
     - qBittorrent:
         icon: qbittorrent.svg
