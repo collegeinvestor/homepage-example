@@ -1,11 +1,12 @@
 ---
-- openmeteo:
-    label: La Mesa, CA
-    lattitude: 32.7678
-    longitude: -117.0231
-    timezone: America/Los_Angeles
-    units: imperial
-    cache: 5
+- stocks:
+    provider: finnhub
+    color: true # optional, defaults to true
+    cache: 1 # optional, default caches results for 1 minute
+    watchlist:
+      - SPY
+      - ABT
+      - ABBV
 - resources:
     cpu: true
     memory: true
