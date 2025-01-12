@@ -50,3 +50,5 @@ layout:
     header: true
     style: row
     columns: 4
+providers:
+  finnhub: cu1kg19r01qqr3sgul9gcu1kg19r01qqr3sgula0
