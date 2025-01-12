@@ -7,107 +7,33 @@
           view: monthly
           maxEvents: 10
           showTime: true
-          timezone: America/Chicago
+          timezone: America/Los_Angeles
           integrations:
-            - type: sonarr
-              service_group: Tor Stack
-              service_name: Sonarr
-              color: teal
-              params:
-                unmonitored: true
-            - type: radarr
-              service_group: Tor Stack
-              service_name: Radarr
-              color: yellow
-              params:
-                unmonitored: true
-            - type: lidarr
-              service_group: Tor Stack
-              service_name: Lidarr
-              color: green
-              params:
-                unmonitored: true
-            - type: readarr
-              service_group: Tor Stack
-              service_name: Readarr
-              color: red
-              params:
-                unmonitored: true
-- Infrastructure:
-    - Proxmox:
-        icon: proxmox.svg
-        href: "{{HOMEPAGE_VAR_PROXMOX_URL1}}"
-        description: PVE1
-        widget:
-          type: proxmox
-          url: "{{HOMEPAGE_VAR_PROXMOX_URL1}}"
-          username: "{{HOMEPAGE_VAR_PROXMOX_USER}}"
-          password: "{{HOMEPAGE_VAR_PROXMOX_API_KEY}}"
-          node: pve1
-    - Proxmox:
-        icon: proxmox.svg
-        href: "{{HOMEPAGE_VAR_PROXMOX_URL2}}"
-        description: PVE2
-        widget:
-          type: proxmox
-          url: "{{HOMEPAGE_VAR_PROXMOX_URL2}}"
-          username: "{{HOMEPAGE_VAR_PROXMOX_USER}}"
-          password: "{{HOMEPAGE_VAR_PROXMOX_API_KEY}}"
-          node: pve2
-    - Proxmox:
-        icon: proxmox.svg
-        href: "{{HOMEPAGE_VAR_PROXMOX_URL3}}"
-        description: PVE3
-        widget:
-          type: proxmox
-          url: "{{HOMEPAGE_VAR_PROXMOX_URL3}}"
-          username: "{{HOMEPAGE_VAR_PROXMOX_USER}}"
-          password: "{{HOMEPAGE_VAR_PROXMOX_API_KEY}}"
-          node: pve3
-    - Proxmox Backup:
-        icon: proxmox.svg
-        href: https://192.168.0.115:8007/
-        description: Proxmox Backup
-        widget:
-          type: proxmoxbackupserver
-          url: https://192.168.0.115:8007/
-          username: "{{HOMEPAGE_VAR_PROXMOXBACKUP_USER}}"
-          password: "{{HOMEPAGE_VAR_PROXMOXBACKUP_API_KEY}}"
-    - Portainer:
-        icon: portainer.svg
-        href: "{{HOMEPAGE_VAR_PORTAINER_URL}}"
-        description: Portainer K3S GUI
-    - Unraid NAS:
-        icon: unraid.svg
-        href: https://192-168-0-115.c9175cdd751e813093b647592c1feeda7bb97eca.myunraid.net/Dashboard
-        description: Media Server and NAS
-    - Longhorn:
-        icon: longhorn.svg
-        href: "{{HOMEPAGE_VAR_LONGHORN_URL}}"
-        description: K3S Storage
-    - Scrutiny:
-        icon: scrutiny.svg
-        href: "{{HOMEPAGE_VAR_SCRUTINY_URL}}"
-        description: Unraid Array Testing
+            - type: ical # Show calendar events from another service
+              url: https://calendar.google.com/calendar/ical/7lc79or2gm6vc4ne18tbupipb4%40group.calendar.google.com/public/basic.ics # URL with calendar events
+              name: Family Calendar # required - name for these calendar events
+              color: zinc # optional - defaults to pre-defined color for the service (zinc for ical)
+              params: # optional - additional params for the service
+                showName: true # optional - show name before event title in event line - defaults to false
 - Network and IoT:
-    - Adguard Home 1:
-        icon: adguard-home.svg
-        href: "{{HOMEPAGE_VAR_ADGUARD1_URL}}"
-        description: DNS 1
+    - NextDNS:
+        icon: nextdns.svg
+        href: "https://my.nextdns.io/"
+        description: DNS and Spam Filter
         widget:
-          type: adguard
-          url: http://10.43.88.55
-          username: "{{HOMEPAGE_VAR_ADGUARD1_USERNAME}}"
-          password: "{{HOMEPAGE_VAR_ADGUARD1_PASSWORD}}"
-    - Adguard Home 2:
-        icon: adguard-home.svg
-        href: "{{HOMEPAGE_VAR_ADGUARD2_URL}}"
-        description: DNS 2
+          type: nextdns
+          profile: 734738
+          key: cf7f5ca75ab3d2fcd6b87ee4368de666fc44cff6
+    - Unifi:
+        icon: ubiquiti.svg
+        href: "https://192.168.10.1/"
+        description: Nextwork Controller
         widget:
-          type: adguard
-          url: http://192.168.0.109
-          username: "{{HOMEPAGE_VAR_ADGUARD2_USERNAME}}"
-          password: "{{HOMEPAGE_VAR_ADGUARD2_PASSWORD}}"
+            type: unifi
+            url: https://192.168.10.1/
+            username: robert@robertfarrington.com
+            password: Cag@8awe
+            site: Butterfly # optional
     - Traefik:
         icon: traefik.svg
         href: "{{HOMEPAGE_VAR_TRAEFIK_URL}}"
@@ -143,6 +69,10 @@
         icon: cloudflare.svg
         href: https://dash.cloudflare.com
         description: Public DNS
+    - Portainer:
+        icon: portainer.svg
+        href: "{{HOMEPAGE_VAR_PORTAINER_URL}}"
+        description: Portainer K3S GUI
 - Media:
     - Jellyfin:
         icon: jellyfin.svg
